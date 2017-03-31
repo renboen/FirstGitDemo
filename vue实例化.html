@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div v-text="dat.hello"></div>
+		</div>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//new 关键字进行实例化
+			var dat={num:2};
+			var myVue=new Vue({
+				el:"#app",
+				data:dat,
+				methods:{
+					kk:function(){
+						return 5
+					}
+				}
+				
+			})
+//	每个vue实例都会代理data里面的已经有属性      对增加的不起作用		？？？
+	console.log(myVue.num===dat.num);
+	//设置已有属性也会影响到原始数据
+	myVue.num=3;
+	console.log(dat.num);
+	dat.num=4;
+	console.log(myVue.num);
+//	 对增加的不起作用？？？？
+	dat.hello="hello";
+	console.log(myVue.hello)//undefined???为什么
+//	外部调用已存在的方法
+	console.log(myVue.kk())
+//	外部增加方法;;;
+	myVue.add=function(){
+		alert(1)
+	}
+	console.log(myVue)//外部增加方法并没有添加到实例化之中；
+
+
+
+
+	console.log(myVue.$el===document.querySelector("#app"));
+	myVue.he="he";
+	console.log(myVue.$data===dat)
+	
+	//vueg官方解释
+//	注意只有这些被代理的属性是响应的。如果在实例创建之后添加新的属性到实例上，
+//	它不会触发视图更新。我们将在后面详细讨论响应系统。
+var obj= {
+	0:"eee",
+	1:18,
+	length:2	
+}
+var ll= Array.from(obj).map(function(v){
+	
+ 	return typeof(v)==String
+ })
+	console.log(ll)		
+		</script>
+	</body>
+</html>

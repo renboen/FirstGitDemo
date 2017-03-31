@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div>{{mes|turnToArry|bigToSmall}}</div>
+		</div>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myVue=new Vue({
+				el:"#app",
+				data:{
+					mes:"qw45"
+				},
+				filters:{
+					turnToArry:function(v){
+						if(!v) return "";
+						return v.split("")			
+					},
+					bigToSmall:function(v){
+						if(!v) return "";
+					return v.map(function(item,index){
+							return item+"@"+index						
+						})
+					}
+				}
+				
+			})
+			
+			
+			
+	
+			var a=[6,2,9,4,5,5,6];
+			//排序
+			a.sort(function(j,k){//改变原数组
+				return j>k?1:0
+			})
+			console.log(a)
+			
+		var c=a.filter(function(j,k){
+				return j!=a[k+1];
+			})
+			console.log(a)
+		var d=a.map(function(j,k){
+				return j/2;
+			})
+			console.log(a)
+
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+   
+</head>
+<body>
+  <div id="app">
+        <div class="top">
+            <ul>
+                <li><a href="javascript:;" @click='tabToggle(tab01Text);'>first</a></li>
+                <li><a href="javascript:;" @click='tabToggle(tab02Text);'>second</a></li>
+                <li><a href="javascript:;" @click='tabToggle(tab03Text);'>third</a></li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <component :is='currentView' keep-alive></component>
+        </div>
+    </div>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+     var tab01 = Vue.extend({
+            template:'<p>This is tab01</p>'
+        })
+        var tab02 = Vue.extend({
+            template:'<p>This is tab02</p>'
+        })
+        var tab03 = Vue.extend({
+            template:'<p>This is tab03</p>'
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                tab01Text:'tab01',
+                tab02Text:'tab02',
+                tab03Text:'tab03',
+                currentView:'tab01'
+            },
+            components:{
+                tab01:tab01,
+                tab02:tab02,
+                tab03:tab03
+            },
+            methods:{
+               tabToggle:function(tabText){
+                this.currentView=tabText;
+
+               }
+            }
+        })
+
+	</script>
+</body>
+</html>

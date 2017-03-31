@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div v-text="mes" @click="bl" id="pp"></div>
+			<input type="text" v-model="mes" v-on:change="al"/>
+		</div>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var myVue=new Vue({
+			el:"#app",
+			data:{
+				mes:"我会随着输入框改变"
+			},
+			methods:{
+				al:function(e){
+					alert(this.mes);
+					alert(e.target.type)
+				
+				},
+				bl:function(e){
+					alert(e.target.id+e.target.innerHTML)
+				}
+			
+			}
+			
+			
+		})
+	</script>
+	</body>
+</html>
